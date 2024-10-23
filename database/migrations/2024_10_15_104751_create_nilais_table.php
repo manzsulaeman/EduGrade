@@ -13,7 +13,7 @@ class CreateNilaisTable extends Migration
             $table->integer('nilai');
             $table->string('ket')->nullable();
             $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
-            $table->foreignId('mata_pelajaran_id')->constrained('mata_pelajarans')->onDelete('cascade');
+            $table->foreignId('kegiatan_id')->constrained('kegiatans')->onDelete('cascade');
             $table->string('tahun_pelajaran');
             $table->timestamps();
         });
