@@ -21,6 +21,10 @@ class KegiatanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
+    protected static ?string $navigationLabel = 'Kegiatan';
+
+    protected static ?string $slug = 'kegiatan';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -28,8 +32,8 @@ class KegiatanResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-           
- 
+
+
                     Select::make('kriteria_id')
                         ->label('Kriteria')
                         ->options(Kriteria::all()->pluck('nama', 'id'))

@@ -2,20 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\Guru;
-use Filament\Tables;
-use App\Models\Nilai;
-use App\Models\Kegiatan;
-use App\Models\Kriteria;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Select;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\NilaiResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\NilaiResource\RelationManagers;
+use App\Models\Guru;
+use App\Models\Kegiatan;
+use App\Models\Nilai;
+use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class NilaiResource extends Resource
 {
@@ -30,21 +26,22 @@ class NilaiResource extends Resource
                 Forms\Components\TextInput::make('nilai')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('keterangan')
+                Forms\Components\TextInput::make('ket')
+                    ->label('Keterangan')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('tahun_pelajaran')
                     ->required()
                     ->maxLength(255),
 
-                    Select::make('guru_id')
-    ->label('Nama Guru')
-    ->options(Guru::all()->pluck('nama', 'id'))
-    ->searchable(),
+                Select::make('guru_id')
+                    ->label('Nama Guru')
+                    ->options(Guru::all()->pluck('nama', 'id'))
+                    ->searchable(),
 
-    Select::make('kegiatan_id')
-    ->label('Kegiatan')
-    ->options(Kegiatan::all()->pluck('nama', 'id'))
-    ->searchable(),
+                Select::make('kegiatan_id')
+                    ->label('Kegiatan')
+                    ->options(Kegiatan::all()->pluck('nama', 'id'))
+                    ->searchable(),
             ]);
     }
 

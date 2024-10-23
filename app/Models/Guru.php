@@ -12,21 +12,21 @@ class Guru extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
+
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class);
     }
-    
-    public function matapelajaran()
+
+    public function mataPelajaran()
     {
         return $this->belongsTo(MataPelajaran::class);
     }
-    
+
     public function nilais()
     {
         return $this->hasMany(Nilai::class);
     }
-    
+
     }
 

@@ -2,21 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\Guru;
-use Filament\Tables;
-use App\Models\Jabatan;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Select;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\GuruResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\GuruResource\RelationManagers;
+use App\Models\Guru;
+use App\Models\Jabatan;
 use App\Models\MataPelajaran;
-
-use function PHPSTORM_META\map;
+use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class GuruResource extends Resource
 {
@@ -31,16 +26,16 @@ class GuruResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                 
-Select::make('jabatan_id')
-    ->label('Jabatan')
-    ->options(Jabatan::all()->pluck('nama', 'id'))
-    ->searchable(),
 
-    Select::make('mataPelajaran_id')
-    ->label('Mata Pelajaran')
-    ->options(MataPelajaran::all()->pluck('nama', 'id'))
-    ->searchable(),
+                Select::make('jabatan_id')
+                    ->label('Jabatan')
+                    ->options(Jabatan::all()->pluck('nama', 'id'))
+                    ->searchable(),
+
+                Select::make('mataPelajaran_id')
+                    ->label('Mata Pelajaran')
+                    ->options(MataPelajaran::all()->pluck('nama', 'id'))
+                    ->searchable(),
             ]);
     }
 
